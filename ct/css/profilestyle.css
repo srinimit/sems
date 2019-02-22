@@ -1,0 +1,512 @@
+
+body
+{
+  margin:0px;
+  padding:0px;
+    background-color: #000000;
+	font-family: "Open Sans", arial;
+	color:#fff;
+	font-weight:300;
+
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  background-color: #3e94ec;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+.pace-done .pace-activity:after,.pace-progress-inner:after, .pace:after, .pace-progress:after { 
+    /* ******************************************************* */
+    /* Change the following line to update the welcome message */
+    /* ******************************************************* */
+    content: "Welcome";
+}
+
+html, body {
+    font-family: 'Noto Sans',serif;
+    height: 100%;
+    background-image: url(bg.jpeg);
+    background: -moz-linear-gradient(-45deg, #a7c7c2 0%, #9aae93 29%, #7d8262 100%);
+    background: -webkit-linear-gradient(-45deg, #a7c7c2 0%,#9aae93 29%,#7d8262 100%);
+    background: linear-gradient(135deg, #a7c7c2 0%,#9aae93 29%,#7d8262 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7c2', endColorstr='#7d8262',GradientType=1 );
+    margin: 0;
+    padding: 0;
+}
+
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    height: 100%;
+    width: 100%;
+}
+
+.pace-done .pace-progress {
+    animation: hideBorder 250ms ease-in-out forwards;
+    animation-delay: 575ms;
+}
+
+.pace-progress {
+    position: fixed;
+    z-index: 2000;
+    top: 50%;
+    left: 7.5%;
+    max-width: 85%;
+    border-top: 2px solid rgba(255,255,255,1);
+    margin-top: -2px;
+    bottom: 0;
+}
+
+.pace-activity {
+    width: 100%;
+    height: 50%;
+    position: fixed;
+}
+
+.pace-done .pace-activity:after,.pace-progress-inner:after, .pace:after, .pace-progress:after {
+    padding: 0;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Noto Sans', serif;
+    font-size: 4.75rem;
+    text-align: center;
+}
+
+.pace-done.pace:after {
+    animation: fadeIn .05s ease-in-out forwards,
+    flyAway 700ms ease-in forwards;
+    animation-delay: 1.05s, 1.15s;
+}
+
+.pace:after {
+    top: 50%;
+    position: absolute;
+    margin-top: -3.7rem;
+    width: 100%;
+    color: rgba(255,255,255,0.0);
+}
+
+.pace-activity:after,.pace-progress-inner:after {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.pace-progress-inner {
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+.pace .pace-activity:after, .pace .pace-progress-inner:after { display: none; }
+
+.pace-done .pace-activity:after {
+    display: block;
+    animation: slideUp 1.05s ease-in-out forwards,
+    fadeOut .1s ease-out forwards;
+    animation-delay: 0s, 1.05s;
+}
+
+.pace-activity:after {
+    margin-bottom: -1.93rem;
+    bottom: 1.93rem;
+}
+
+.pace-done .pace-progress-inner:after {
+    display: block;
+    animation: slideDown 1.05s ease-in-out forwards,
+    fadeOut .1s ease-out forwards;
+    animation-delay: 0s, 1.05s;
+}
+
+/* ***************************************** */
+/* Shadow                                    */
+/* ***************************************** */
+.pace-progress {
+    perspective: 1000px;
+    perspective-origin: 50% 80%;
+}
+.pace-progress:after {
+    color: transparent;
+    text-shadow: 0 0 15px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: rotateX(75deg);
+    position: fixed;
+    bottom: 2%;
+    height: 8rem;
+    width: 100%;
+}
+.pace-done .pace-progress:after {
+    animation: fadeInHalf .5s ease-in-out forwards,
+    shadowFlyAway 700ms ease-in forwards;
+    animation-delay: .6s, 1.15s;
+}
+
+
+
+/* ***************************************** */
+/* Animation                                 */
+/* ***************************************** */
+
+@keyframes fadeIn {
+    from { color: rgba(255,255,255,0.0); }
+    to   { color: rgba(255,255,255,1.0); }
+}
+@keyframes fadeOut {
+    from { color: rgba(255,255,255,1.0); }
+    to   { color: rgba(255,255,255,0.0); }
+}
+@keyframes fadeInHalf {
+    from { opacity: 0; }
+    to   { opacity: .5; }
+}
+@keyframes shadowFlyAway {
+    0% {
+  text-shadow: 0 0 15px rgba(0,0,0,0.25);
+  opacity: .5;
+  letter-spacing: 0.05rem;
+    }
+    100% {
+  text-shadow: 0 0 35px rgba(0,0,0,0.25);
+  opacity: 0;
+  letter-spacing: 2rem;
+    }
+}
+@keyframes flyAway {
+    from {
+  letter-spacing: 0.05rem;
+  opacity: 1;
+  font-size: 4.75rem;
+  margin-top: -3.6rem;
+    }
+    to {
+  letter-spacing: 2rem;
+  opacity: 0;
+  font-size: 5.5rem;
+  margin-top: -3.95rem;
+    }
+}
+
+@keyframes hideBorder {
+    0% { border-top: 2px solid rgba(255,255,255,1); }
+    100% { border-top: 2px solid rgba(255,255,255,.01); }
+}
+
+@keyframes slideDown {
+    from { margin-top: -6.1rem; }
+    to   { margin-top: -3.7rem; }
+}
+
+
+@keyframes slideUp {
+    from { height: 0rem; }
+    to   { height: 3.75rem; }
+}
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+}
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+.logo{
+  
+}
+
+.settings {
+  
+  height:90px; 
+  float:left;
+  background-color: #000000; 
+  background-repeat:no-repeat;
+  width:250px;
+  margin:0px;
+ text-align: center;
+font-size:20px;
+font-family: 'Strait', sans-serif;
+
+}
+
+
+
+
+
+
+/* ScrolBar  */
+.scrollbar
+{
+
+height: 90%;
+width: 100%;
+overflow-y: hidden;
+overflow-x: hidden;
+}
+
+.scrollbar:hover
+{
+
+height: 90%;
+width: 100%;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+
+/* Scrollbar Style */ 
+
+
+
+#style-1::-webkit-scrollbar-track
+{
+border-radius: 2px;
+}
+
+#style-1::-webkit-scrollbar
+{
+width: 5px;
+background-color: #F7F7F7;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+background-color: #BFBFBF;
+}
+/* Scrollbar End */ 
+
+
+
+
+.fa-lg {
+font-size: 21em;
+  
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 55px;
+height: 46px;
+text-align: center;
+top:12px; 
+font-size:20px;
+
+}
+
+
+
+.main-menu:hover, nav.main-menu.expanded {
+width:250px;
+overflow:hidden;
+opacity:1;
+
+}
+
+.main-menu {
+background:#F7F7F7;
+position:absolute;
+top:0;
+bottom:0;
+height:100%;
+left:0;
+width:55px;
+overflow:hidden;
+-webkit-transition:width .2s linear;
+transition:width .2s linear;
+-webkit-transform:translateZ(0) scale(1,1);
+box-shadow: 1px 0 15px rgba(0, 0, 0, 0.07);
+  opacity:1;
+}
+
+.main-menu>ul {
+margin:10px 0;
+
+}
+
+.main-menu li {
+position:relative;
+display:block;
+width:250px;
+  
+
+
+}
+
+.main-menu li>a {
+position:relative;
+width:255px;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:#8a8a8a;
+font-size: 13px;
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .14s linear;
+transition:all .14s linear;
+font-family: 'Strait', sans-serif;
+border-top:1px solid #f2f2f2;
+
+text-shadow: 1px 1px 1px  #fff;  
+}
+
+
+
+.main-menu .nav-icon {
+  
+position:relative;
+display:table-cell;
+width:55px;
+height:56px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+
+}
+
+.main-menu .nav-text  {
+   
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:190px;
+font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu .share {
+}
+
+
+
+.main-menu .fb-like {
+
+left: 180px;
+position:absolute;
+top: 15px;
+}
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
+  
+}
+
+.no-touch .scrollable.hover {
+overflow-y:hidden;
+
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+  
+}
+
+
+/* Logo Hover Property */
+
+
+.settings:hover, settings:focus {   
+  background:url( https://s17.postimg.org/74cl7s05b/logo_hover.jpg);
+  -webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+-moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+-o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+
+.settings:active, settings:focus {   
+  background:url( https://s3.postimg.org/bqfooag4z/startific.jpg);
+  -webkit-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+-moz-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+-o-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+
+
+a:hover,a:focus {
+text-decoration:none;
+border-left:0px solid #F7F7F7;
+
+
+
+}
+
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+  
+}
+
+nav ul,nav li {
+outline:0;
+margin:10;
+padding:0;
+text-transform: uppercase;
+}
+
+
+
+
+/* Darker element side menu Start*/
+
+
+.darkerli
+{
+background-color:#ededed;
+text-transform:capitalize;  
+}
+
+.darkerlishadow
+{
+background-color:#ededed;
+text-transform:capitalize;  
+-webkit-box-shadow: inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+-moz-box-shadow:    inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+box-shadow:         inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+}
+
+
+.darkerlishadowdown
+{
+background-color:#ededed;
+text-transform:capitalize;  
+-webkit-box-shadow: inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+-moz-box-shadow:    inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+box-shadow:         inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+}
+
+/* Darker element side menu End*/
+
+
+
+
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#00bbbb;
+text-shadow: 0px 0px 0px; 
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 200%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
