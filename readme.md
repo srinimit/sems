@@ -46,7 +46,7 @@ Staff
 * populateStudents.php
   * Populate students according to batch
 * query.php
- * For querying the Student.
+  * For querying the Student.
 * sadd.php
   * Page for Adding student 
 * saddUtil.php
