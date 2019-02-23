@@ -8,7 +8,7 @@ $_SESSION['regno']=$_POST['regno'];
 <head>
   <meta charset="UTF-8">
   <title>PROFILE</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -28,7 +28,6 @@ $_SESSION['regno']=$_POST['regno'];
 <script>
 $(document).ready(function(){
   var reg = (document.getElementById('tech1').innerHTML).trim();
-  //alert("srini"+reg+"ssss");
   var grade = (document.getElementById('grade1').innerHTML).trim();
   $.ajax({url: "listGrade.php",
             data: {regno:reg,grade:grade},

@@ -7,7 +7,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>PROFILE</title>
-  <link rel="stylesheet" href="css/profilestyle.css">
+  <link rel="stylesheet" href="../css/profilestyle.css">
 
 </head>
 
@@ -22,7 +22,7 @@ session_start();
 <meta name="google" value="notranslate"/>
 <title>Side Menu</title>
 
-<link rel="stylesheet" type="text/css" href="css/menu.css">
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

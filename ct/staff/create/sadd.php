@@ -6,7 +6,7 @@
   
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
   
 </head>
@@ -27,7 +27,7 @@
 			       var reg = $(this).val();
 			       var type = document.getElementById("type").value;
 			       var pass = Math.random().toString(36).slice(-8);		
-			       $.ajax({url: "saddUtil.php",
+			       $.ajax({url: "create/saddUtil.php",
 				          type: "POST",
 				          data:{
 				          	reg:reg,
@@ -81,7 +81,7 @@
 function edValueKeyPress() {
     var edValue = document.getElementById("edValue");
     var batch = edValue.value;
-    $.ajax({url: "populateStudents.php",
+    $.ajax({url: "create/populateStudents.php",
           data: {batch:batch},
           type: "POST",
          success: function(result,data){

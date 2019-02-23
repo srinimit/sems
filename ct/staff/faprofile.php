@@ -8,7 +8,7 @@ $_SESSION['regno']=$_POST['regno'];
 <head>
   <meta charset="UTF-8">
   <title>PROFILE</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -28,7 +28,7 @@ $_SESSION['regno']=$_POST['regno'];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $.ajax({url: "welcome.php",
+  $.ajax({url: "../student/welcome.php",
           type: "POST",
          success: function(result){
          $("#tech").html(result);
@@ -40,7 +40,7 @@ $(document).ready(function(){
     });
     $("#sem1").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../../student/sem.php",
           data: {regno:reg,sem:"1"},
           type: "POST",
          success: function(result,data){
@@ -51,7 +51,7 @@ $(document).ready(function(){
     });
     $("#sem2").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"2"},
           type: "POST",
          success: function(result,data){
@@ -62,7 +62,7 @@ $(document).ready(function(){
     });
     $("#sem3").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"3"},
           type: "POST",
          success: function(result,data){
@@ -73,7 +73,7 @@ $(document).ready(function(){
     });
     $("#sem4").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"4"},
           type: "POST",
          success: function(result,data){
@@ -84,7 +84,7 @@ $(document).ready(function(){
     });
     $("#sem5").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"5"},
           type: "POST",
          success: function(result,data){
@@ -95,7 +95,7 @@ $(document).ready(function(){
     });
     $("#sem6").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"6"},
           type: "POST",
          success: function(result,data){
@@ -106,7 +106,7 @@ $(document).ready(function(){
     });
     $("#sem7").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"7"},
           type: "POST",
          success: function(result,data){
@@ -117,7 +117,7 @@ $(document).ready(function(){
     });
     $("#sem8").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"8"},
           type: "POST",
          success: function(result,data){

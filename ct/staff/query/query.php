@@ -1,5 +1,5 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
@@ -24,7 +24,7 @@
 	function changeType(element){
 		var selectedValue = element.value;
 		if(selectedValue == "grade"){
-			$.ajax({url: "viewByGrade.php",
+			$.ajax({url: "query/viewByGrade.php",
 	          type: "POST",
 	         success: function(result){
 	         	var tb = document.getElementById("empty");
@@ -37,13 +37,14 @@
 		else{
 			var tb = document.getElementById("empty");
 			tb.innerHTML = "";
+			tb = document.getElementById("bygrade");
+			tb.innerHTML = "";
 		}
 	}
-	
 
 	function changeGrade(element){
 		var selectedValue = element.value;
-		$.ajax({url: "populateGrade.php",
+		$.ajax({url: "query/populateGrade.php",
 	          data: {grade:selectedValue},
 	          type: "POST",
 	         success: function(result,data){
@@ -55,12 +56,12 @@
 	            alert('Error occured');
 	        }});
 	}
-	function show(k){
+	function show(reg){
 			var grade = (document.getElementById("grade").value);
-			var url1 = "gradepage.php";
+			var url1 = "query/gradepage.php";
 			$.ajax({url: url1 ,
 	          type: "POST",
-	          data:{regno:k,
+	          data:{regno:reg,
 	          		grade:grade
 	          	},
 	         	success: function(result,data){

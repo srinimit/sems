@@ -1,5 +1,5 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <?php
@@ -43,7 +43,7 @@ $result = mysqli_query($conn,$sql);
 <script type="text/javascript">
 	function show(k){
 			alert(k);
-			var url1 = "faprofile.php";
+			var url1 = "list/faprofile.php";
 			//window.open(url1,"_blank");
 			$.ajax({url: url1 ,
 	          type: "POST",

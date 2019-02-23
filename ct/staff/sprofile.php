@@ -7,7 +7,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>PROFILE</title>
-  <link rel="stylesheet" href="css/profilestyle.css">
+  <link rel="stylesheet" href="../css/profilestyle.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@ session_start();
 <meta name="google" value="notranslate"/>
 <title>Side Menu</title>
 
-<link rel="stylesheet" type="text/css" href="css/menu.css">
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -46,7 +46,7 @@ $(document).ready(function(){
     });
      $("#list").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "list.php",
+        $.ajax({url: "list/list.php",
           data: {regno:reg},
           type: "POST",
          success: function(result,data){
@@ -58,7 +58,7 @@ $(document).ready(function(){
 
      $("#query").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "query.php",
+        $.ajax({url: "query/query.php",
           data: {regno:reg},
           type: "POST",
          success: function(result,data){
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     $("#create").click(function(){
       var reg = document.getElementById('tech').innerHTML;
-        $.ajax({url: "sadd.php",
+        $.ajax({url: "create/sadd.php",
           data: {regno:reg},
           type: "POST",
          success: function(result,data){
@@ -81,7 +81,7 @@ $(document).ready(function(){
     });
     $("#spass").click(function(){
       var reg = document.getElementById('tech').innerHTML;
-        $.ajax({url: "spass.php",
+        $.ajax({url: "utils/spass.php",
           data: {regno:reg},
           type: "POST",
          success: function(result,data){

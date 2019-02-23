@@ -12,7 +12,7 @@ session_start();
 		var roll = document.getElementById('roll').value;
 		var pass = document.getElementById('pass').value;
 		
-			 $.ajax({url: "spassutil.php",
+			 $.ajax({url: "utils/spassutil.php",
           data: {regno:roll,pass:pass},
           type: "POST",
          success: function(result,data){
@@ -24,7 +24,7 @@ session_start();
 		$("#btn1").click(function(){
 
 		var roll = document.getElementById('roll1').value;
-		$.ajax({url: "spassutilOpen.php",
+		$.ajax({url: "utils/spassutilOpen.php",
           data: {regno:roll},
           type: "POST",
          success: function(result,data){
@@ -35,7 +35,7 @@ session_start();
 		});
 		$("#btn2").click(function(){
 
-		$.ajax({url: "spassutilOpenAll.php",
+		$.ajax({url: "utils/spassutilOpenAll.php",
           type: "POST",
          success: function(result){
             alert(result);
@@ -46,7 +46,7 @@ session_start();
 		$("#btn3").click(function(){
 
 		var roll = document.getElementById('roll1').value;
-		$.ajax({url: "spassutilLock.php",
+		$.ajax({url: "utils/spassutilLock.php",
           data: {regno:roll},
           type: "POST",
          success: function(result,data){
@@ -57,7 +57,7 @@ session_start();
 		});
 		$("#btn4").click(function(){
 
-		$.ajax({url: "spassutilLockAll.php",
+		$.ajax({url: "utils/spassutilLockAll.php",
           type: "POST",
          success: function(result){
             alert(result);
@@ -67,7 +67,7 @@ session_start();
 		});
 		$("#btn5").click(function(){
 
-		$.ajax({url: "increment.php",
+		$.ajax({url: "utils/increment.php",
           type: "POST",
          success: function(result){
             alert(result);

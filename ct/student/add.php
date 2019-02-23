@@ -6,7 +6,7 @@
   <title></title>
   	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -78,8 +78,8 @@
     }
     );	
 
-  $('#dtBasicExample').DataTable();
-  $('.dataTables_length').addClass('bs-select');
+//  $('#dtBasicExample').DataTable();
+ // $('.dataTables_length').addClass('bs-select');
 });
 
 </script>
