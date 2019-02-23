@@ -48,7 +48,7 @@ Staff
 * query.php
  * For querying the Student.
 * sadd.php
- * Page for Add student 
+  * Page for Adding student 
 * saddUtil.php
   * Add student to DB
 * slogin.php
