@@ -6,7 +6,7 @@ session_start();
 $reg=$_SESSION['regno'];
 $sem=$_POST['sem'];
 $curr=0;
-$conn = mysqli_connect("mysql.ct.mitindia.edu", "ctalumni_chair", "mitctalumni2019", "ctalumni");
+$conn = mysqli_connect("localhost", "root", "", "ctmit");
 $sql = "select sem from student where regno='$reg'";
 $result = mysqli_query($conn,$sql);
 
