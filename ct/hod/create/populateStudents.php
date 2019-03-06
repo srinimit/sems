@@ -3,7 +3,7 @@
 	error_reporting(E_ERROR | E_PARSE);
 	$sem=$_POST['batch'];
 	$conn = mysqli_connect("localhost","root","","ctmit");
-		$sql="SELECT * FROM `StudentDetails` WHERE `batch_no` = $sem";
+	$sql="SELECT * FROM `StudentDetails` WHERE `batch_no` = $sem";
 	$result = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result)>0)
 	{

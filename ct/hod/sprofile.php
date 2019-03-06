@@ -1,8 +1,5 @@
 <?php
 session_start();
-if (empty($_SESSION['id'])){
-  header('Location: /ct/staff');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -82,17 +79,7 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
-    $("#spass").click(function(){
-      var reg = document.getElementById('tech').innerHTML;
-        $.ajax({url: "utils/spass.php",
-          data: {regno:reg},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
+    
     
 }
 );
@@ -165,15 +152,7 @@ $(document).ready(function(){
     <span class="nav-text">Query student profile</span>
     </a>
 </li>
-<li id = "spass">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">P</i>
-    </span><br><br>
-<span class="nav-text">Updates</span>
-</a>
-</li>   
+
 </ul>     
 <ul class="logout">
 <li>

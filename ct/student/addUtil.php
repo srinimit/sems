@@ -19,11 +19,7 @@
 	$sql = "INSERT INTO `$reg`(`ccode`, `cname`, `credits`, `grade`, `sem`) VALUES ('$cc','$cn',$cr,'$grade',$curr)";
 
 	if(mysqli_query($conn,$sql)){
-		$sql = "UPDATE `student` SET `update` = '0' WHERE `student`.`regno` = $reg";
-		if(mysqli_query($conn,$sql)){
-			echo "update changed to lock";
-		}
-		
+				
 	}
 	else
 	echo  mysqli_error($conn);

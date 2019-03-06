@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (empty($_SESSION['regno'])){
-  header('Location: /ct/student');
-}
+$_SESSION['regno']=$_POST['regno'];
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -10,7 +8,7 @@ if (empty($_SESSION['regno'])){
 <head>
   <meta charset="UTF-8">
   <title>PROFILE</title>
-  <link rel="stylesheet" href="../css/profilestyle.css">
+  <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -25,43 +23,24 @@ if (empty($_SESSION['regno'])){
 <meta name="google" value="notranslate"/>
 <title>Side Menu</title>
 
-<link rel="stylesheet" type="text/css" href="../css/menu.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $.ajax({url: "welcome.php",
+  $.ajax({url: "../student/welcome.php",
           type: "POST",
          success: function(result){
-            $("#tech").html(result);
+         $("#tech").html(result);
         },error: function() {
             alert('Error occured');
         }});
-    $("#home").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "welcome.php",
-          type: "POST",
-         success: function(result){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
+    $("#home1").click(function(){
+       location.reload();
     });
-    $("#logout").click(function(){
-      $.ajax({url: "logout.php",
-          type: "POST",
-          success: function(result){
-            location.href= "/ct/student";
-           // $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-
     $("#sem1").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../../student/sem.php",
           data: {regno:reg,sem:"1"},
           type: "POST",
          success: function(result,data){
@@ -72,7 +51,7 @@ $(document).ready(function(){
     });
     $("#sem2").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"2"},
           type: "POST",
          success: function(result,data){
@@ -83,7 +62,7 @@ $(document).ready(function(){
     });
     $("#sem3").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"3"},
           type: "POST",
          success: function(result,data){
@@ -94,7 +73,7 @@ $(document).ready(function(){
     });
     $("#sem4").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"4"},
           type: "POST",
          success: function(result,data){
@@ -105,7 +84,7 @@ $(document).ready(function(){
     });
     $("#sem5").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"5"},
           type: "POST",
          success: function(result,data){
@@ -116,7 +95,7 @@ $(document).ready(function(){
     });
     $("#sem6").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"6"},
           type: "POST",
          success: function(result,data){
@@ -127,7 +106,7 @@ $(document).ready(function(){
     });
     $("#sem7").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"7"},
           type: "POST",
          success: function(result,data){
@@ -138,7 +117,7 @@ $(document).ready(function(){
     });
     $("#sem8").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "../student/sem.php",
           data: {regno:reg,sem:"8"},
           type: "POST",
          success: function(result,data){
@@ -158,18 +137,7 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
-    $("#pass").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "newpass.php",
-          data: {regno:reg},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-
+    
 }
 );
 </script> 
@@ -194,23 +162,12 @@ $(document).ready(function(){
 <div class="scrollbar" id="style-1">
 
 <ul>
-  
-<li id ="home">                                   
+<li id ="home1">                                   
 <a href="#"> &nbsp &nbsp
 <i class="fa fa-home fa-lg"></i>
 <span class="nav-text">Home</span>
 </a>
 </li>  
-
-<li id = "pass">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">#</i>
-    </span><br><br>
-<span class="nav-text">CHANGE PASS</span>
-</a>
-</li>    
 
 <li id = "sem1">                                   
 <a href="#"> &nbsp &nbsp
@@ -294,37 +251,16 @@ $(document).ready(function(){
 <span class="nav-text"><br>SEMESTER 8</span>
 </a>
 </li>   
-<li id = "add">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">+</i>
-      <br>
-
-    </span><br><br>
-<span class="nav-text"><br>ADD SUBJECTS</span>
-</a>
-</li>   
      
-<li id = "logout">                                   
-  <a href="#"> &nbsp &nbsp
-  <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-inverse fa-stack-1x">X</i>
-        <br>
-
-      </span><br><br>
-  <span class="nav-text"><br>LOGOUT</span>
-  </a>
-</li>      
-
-    </ul>
-  </div>
+</nav>
+</ul>
+</div>
 </nav>
     
     <CENTER>
-     <div id = "tech" style="background-image: 'bg.jpeg'"><?php
-     echo $_SESSION['regno']?>
+     <div id = "tech" style="display: none;"><?php
+     echo $_POST['regno']
+     ?>
        
      </div>
     </CENTER>

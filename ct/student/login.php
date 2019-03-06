@@ -1,5 +1,6 @@
 <?php  
 session_start();
+
 $conn = mysqli_connect("localhost","root","","ctmit");
 if(!$conn){
 		echo "not connected";
@@ -10,7 +11,10 @@ $sql = "select * from student where regno= '$regno' and pass='$pass'";
 $result = mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0)
 {
-	$_SESSION["regno"] = $regno;
+	if (! empty($_POST))
+	{
+	 	$_SESSION["regno"] = $regno;
+	}
 	echo "<meta http-equiv=\"refresh\" content=\"0;url=profile.php\">";
 }
 else
