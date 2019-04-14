@@ -16,6 +16,7 @@ session_start();
           type: "POST",
          success: function(result,data){
             alert(result);
+            window.location.href = "http://ct.mitindia.edu/ct/student/profile.php";
         },error: function() {
             alert('Error occured');
         }});
@@ -32,7 +33,7 @@ session_start();
 	<tr>
 		<th align="left"><h3>Enter new password</h3></th>
 		<td height="2" align="right">
-			<input id="passwd" name="passwd" placeholder="Password here!">
+			<input id="passwd" type  ="password" name="passwd" placeholder="Password here!">
 		</td>
 	</tr>
 	<tr>

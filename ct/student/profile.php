@@ -29,6 +29,21 @@ if (empty($_SESSION['regno'])){
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+  function print(sem){
+    $.ajax({url: "fpdf/printsem.php",
+          data: {sem:sem},
+          type: "POST",
+         success: function(result){
+          
+          //  $("#tech").html(result);
+        },error: function() {
+            alert('Error occured');
+        }});
+  }
+</script>
+
 <script>
 $(document).ready(function(){
   $.ajax({url: "welcome.php",

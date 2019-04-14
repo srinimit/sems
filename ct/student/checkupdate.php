@@ -1,7 +1,13 @@
 <?php
 session_start();
 $reg=$_SESSION['regno'];
-$conn = mysqli_connect("localhost","root","","ctmit");
+$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 $sql = "SELECT  `update` FROM `student` WHERE  regno='$reg'";
 $result = mysqli_query($conn,$sql);
 $curr=0;

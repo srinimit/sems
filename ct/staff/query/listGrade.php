@@ -2,11 +2,18 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <?php
-	ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+	
 	session_start();
 	$reg  = $_POST['regno'];
 	$grade = $_POST['grade'];
-	$conn = mysqli_connect("localhost","root","","ctmit");
+	$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 	echo "<h1>Reg number: <b>".$reg."</b></h1>";
 	$sql = "SELECT * FROM `".$reg."` WHERE `grade` = \"$grade\"";
 	$result = mysqli_query($conn,$sql);

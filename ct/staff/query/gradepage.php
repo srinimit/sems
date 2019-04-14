@@ -29,7 +29,7 @@ $_SESSION['regno']=$_POST['regno'];
 $(document).ready(function(){
   var reg = (document.getElementById('tech1').innerHTML).trim();
   var grade = (document.getElementById('grade1').innerHTML).trim();
-  $.ajax({url: "listGrade.php",
+  $.ajax({url: "query/listGrade.php",
             data: {regno:reg,grade:grade},
             type: "POST",
            success: function(result,data){

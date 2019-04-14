@@ -2,7 +2,13 @@
 	session_start();
 	$regno=$_POST['regno'];
 	$fa=$_SESSION['id'];
-	$conn = mysqli_connect("localhost","root","","ctmit");
+	$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 	$sql="SELECT * FROM `student` WHERE `regno`=$regno";
 	$result = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result)>0)

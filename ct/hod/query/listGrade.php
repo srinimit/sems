@@ -6,7 +6,13 @@
 	session_start();
 	$reg  = $_POST['regno'];
 	$grade = $_POST['grade'];
-	$conn = mysqli_connect("localhost","root","","ctmit");
+	$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 	echo "<h1>Reg number: <b>".$reg."</b></h1>";
 	$sql = "SELECT * FROM `".$reg."` WHERE `grade` = \"$grade\"";
 	$result = mysqli_query($conn,$sql);

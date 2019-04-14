@@ -2,7 +2,13 @@
 session_start();
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $staff=$_SESSION['id'];
-$conn = mysqli_connect("localhost","root","","ctmit");
+$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 $reg=$_POST['reg'];
 $pass = $_POST['pass'];

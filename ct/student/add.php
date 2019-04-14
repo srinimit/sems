@@ -13,6 +13,7 @@
          <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
          <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+         
          <script>
             $(document).ready(function () {
             
@@ -30,20 +31,20 @@
             		var rowCount = $("#tb_ra td").closest("tr").length;
             		var tb = document.getElementById("tb_ra");
             		for(var i=1;i<=rowCount;i++){
-            			var cc = tb.rows[i].cells[1].children[0].value;
-            			var cn = tb.rows[i].cells[2].children[0].value;
-            			var cr = tb.rows[i].cells[3].children[0].value;
-            			var grade = tb.rows[i].cells[4].children[0].value;
-            			$.ajax({url: "addUtil.php",
-            			          type: "POST",
-            			          data:{
-            			          	cc:cc,cn:cn,cr:cr,grade:grade
-            			          },
-            			         success: function(result,data){
-            			         	
-            			        },error: function() {
-            			            alert('Error occured');
-            			        }});	
+              			var cc = tb.rows[i].cells[1].children[0].value;
+              			var cn = tb.rows[i].cells[2].children[0].value;
+              			var cr = tb.rows[i].cells[3].children[0].value;
+              			var grade = tb.rows[i].cells[4].children[0].value;
+              			$.ajax({url: "addUtil.php",
+              			          type: "POST",
+              			          data:{
+              			          	cc:cc,cn:cn,cr:cr,grade:grade
+              			          },
+              			         success: function(result,data){
+              			         	
+              			        },error: function() {
+              			            alert('Error occured');
+              			        }});	
             		}
             		var rowCount = $("#tb_elec td").closest("tr").length;
             		var tb = document.getElementById("tb_elec");
@@ -81,7 +82,12 @@
                               alert('Error occured');
                           }});  
                 }
-            		alert("Successfully Updated");
+                setTimeout(function()
+                {
+                  alert("Successfully Updated");
+
+                }, 2000);
+            		
             		$.ajax({url: "incrementSem.php",
             			          type: "POST",
             			         success: function(result,data){
@@ -89,7 +95,8 @@
             			        },error: function() {
             			            alert('Error occured');
             			        }});	
-            		$("#tech").html("<meta http-equiv=\"refresh\" content=\"1;url=profile.php\">");
+                
+            		$("#tech").html("<meta http-equiv=\"refresh\" content=\";url=profile.php\">");
             		
                }
                );	
@@ -102,7 +109,13 @@
          <H1>
             <center>Current Sem:<div id="semid"><?php
                   $reg=$_SESSION['regno'];
-                  $conn = mysqli_connect("localhost","root","","ctmit");
+                  $servername = "mysql.ct.mitindia.edu";
+                  $username = "ctalumni_chair";
+                  $password = "mitctalumni2019";
+                  $dbname = "ctalumni";
+
+                  // Create connection
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
                   $sql = "select sem from student where regno='$reg'";
                   $result = mysqli_query($conn,$sql);
                   
@@ -139,7 +152,7 @@
                      <td>
                         <select id="coursecodes" onchange="changeFunc_core(this);"></select>
                      </td>
-                     <td><input type="text" readonly id= "coursename"></td>
+                     <td><input type="text" readonly  style = "width:250px;overflow:hidden;" id= "coursename"></td>
                      <td><input type="text"  id = "credits" readonly></td>
                      <td>
                         <select>
@@ -180,12 +193,19 @@
                            <option></option>
                            <option id=1>1</option>
                            <option id=2>2</option>
+                           <option id=2>3</option>
+                           <option id=2>4</option>
+                           <option id=2>5</option>
+                           <option id=2>6</option>
+                           <option id=2>7</option>
+                           <option id=2>8</option>
+
                         </select>
                      </td>
                      <td>
                         <select></select>
                      </td>
-                     <td><input type="text" readonly id= "coursename"></td>
+                     <td><input type="text" readonly  style = "width:250px;overflow:hidden;" id= "coursename"></td>
                      <td><input type="text"  id = "credits" readonly></td>
                      <td>
                         <select>
@@ -225,13 +245,13 @@
                         <select id="type" onchange="changeType(this);">
                            <option></option>
                            <option id="professional">Professional</option>
-                           <option id = "others">others</option>
+                           <option id = "Others">others</option>
                         </select>
                      </td>
                      <td>
                         <select></select>
                      </td>
-                     <td><input type="text" readonly id= "coursename"></td>
+                     <td><input type="text" readonly id= "coursename"  style = "width:250px;overflow:hidden;"></td>
                      <td><input type="text" id = "credits" readonly></td>
                      <td>
                         <select>
@@ -263,7 +283,9 @@
                     success: function(result,data){
                     	var tb = document.getElementById("tb_ra");
                     	tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
-                    	
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input readonly type=\"text\" id= \"coursename\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input readonly type=\"text\" id= \"credits\"/>";
+
                    },error: function() {
                        alert('Error occured');
                    }});
@@ -277,7 +299,7 @@
               		tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input type=\"text\" id= \"coursename\"/>";
               		tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input type=\"text\" id= \"credits\"/>";
               	}
-              	if(selectedValue == "Professional"){
+                else if(selectedValue == "Professional"){
               		$.ajax({url: "populateSem_elec.php",
                      data: {sem:0},
                      type: "POST",
@@ -289,6 +311,13 @@
                        alert('Error occured');
                    }});
               	}
+                else{
+                  var tb = document.getElementById("tb_elec");
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input readonly type=\"text\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input readonly type=\"text\" id= \"coursename\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input readonly type=\"text\" id= \"credits\"/>";
+
+                }
               }
               
               function changeSem_elec(element) {
@@ -314,7 +343,6 @@
                     success: function(result,data){
                     	var tb = document.getElementById("tb_ra");
                     	tb.rows[element.parentNode.parentNode.rowIndex].cells[2].children[0].value = result;
-                    	
                    },error: function() {
                        alert('Error occured');
                    }});

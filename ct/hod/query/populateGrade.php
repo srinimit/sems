@@ -2,7 +2,13 @@
 session_start();
 $reg=$_SESSION['id'];
 $grade = $_POST['grade'];
-$conn = mysqli_connect("localhost","root","","ctmit");
+$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 $sql = "select * from student";
 echo '<div class="container" style = "margin-top: 15px; width: 850px; text-align: right;"><div style="overflow-y:auto; height:400px; width: 800px" ><table id="tb" class="table table-striped table-bordered table-sm" cellspacing="0" width="70"> <tr><th>Register Number</th><th>Student Name</th><th>Count</th><th>Action</th></tr>';
 $result = mysqli_query($conn,$sql);

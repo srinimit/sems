@@ -6,7 +6,7 @@ session_start();
 $reg=$_SESSION['regno'];
 $sem=$_POST['sem'];
 $curr=0;
-$conn = mysqli_connect("localhost", "root", "", "ctmit");
+$conn = mysqli_connect("mysql.ct.mitindia.edu", "ctalumni_chair", "mitctalumni2019", "ctalumni");
 $sql = "select sem from student where regno='$reg'";
 $result = mysqli_query($conn,$sql);
 
@@ -25,7 +25,10 @@ else{
 	echo "<h1><br><br>";
 	echo "Academic Performance - Semester $sem";
 	echo "</h1>";
+	echo "<form method='POST' action='fpdf/printsem.php'>";
+	echo "<input hidden type='text' name='reg' value='$reg'>";
 
+	echo "<input hidden type='text' name='sem' value='$sem'>";
 	$sql="SELECT * FROM `$reg` WHERE `sem`= $sem";
 	$result = mysqli_query($conn,$sql);
 
@@ -48,7 +51,12 @@ else{
 	}
 	echo "</table></div></div>";
 	echo "<br>";
-	echo "<button id = '$sem' class=\"btn btn-success\">PRINT</button>";
+	echo "<button id = '$sem' onclick=\"print($sem)\" class=\"btn btn-success\">PRINT</button>";
+	echo "</form>";
+	echo "<form method='POST' action='fpdf/allsem.php'>";
+	echo "<input hidden type='text' name='reg' value='$reg'>";
+	echo "<button id = '$sem' onclick=\"print($sem)\" class=\"btn btn-success\">PRINT CONSOLIDATED</button>";
+	echo "</form>";
 }
 
 }

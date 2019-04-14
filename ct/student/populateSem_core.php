@@ -1,7 +1,13 @@
 <?php
 	session_start();
 	$sem=$_POST['sem'];
-	$conn = mysqli_connect("localhost","root","","ctmit");
+	$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 	$reg=$_SESSION['regno'];
 	$sqltype= "SELECT  `type` FROM `student` WHERE `regno` = '$reg'";
 	$type="";

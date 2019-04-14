@@ -1,7 +1,13 @@
 <?php
 	session_start();
 	$ccode=$_POST['ccode'];
-	$conn = mysqli_connect("localhost","root","","ctmit");
+	$servername = "mysql.ct.mitindia.edu";
+$username = "ctalumni_chair";
+$password = "mitctalumni2019";
+$dbname = "ctalumni";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 	$sql="SELECT * FROM `cbcs` WHERE `ccode`= '$ccode'";
 	$result = mysqli_query($conn,$sql);
 	$cname="";
