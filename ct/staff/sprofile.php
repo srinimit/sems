@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['regno']);
 if (empty($_SESSION['id'])){
   header('Location: /ct/staff');
 }

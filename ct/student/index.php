@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!(empty($_SESSION['regno']))){
+  header('Location: /ct/student/profile.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
 

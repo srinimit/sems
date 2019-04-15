@@ -126,12 +126,14 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
-    $("#add").click(function(){
+    $("#back").click(function(){
+      location.reload();
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "add.php",
-          data: {regno:reg},
+        
+         $.ajax({url: "../staff/list/list.php",
           type: "POST",
-         success: function(result,data){
+           async:false,
+          success: function(result,data){
             $("#tech").html(result);
         },error: function() {
             alert('Error occured');
@@ -168,6 +170,8 @@ $(document).ready(function(){
 <span class="nav-text">Home</span>
 </a>
 </li>  
+
+
 
 <li id = "sem1">                                   
 <a href="#"> &nbsp &nbsp

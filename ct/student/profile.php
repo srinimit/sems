@@ -185,6 +185,11 @@ $(document).ready(function(){
         }});
     });
 
+    $("#manual").click(function(){
+      window.location.href = "http://www.ct.mitindia.edu/ct/student/UserManual.pdf";
+        
+    });
+
 }
 );
 </script> 
@@ -216,6 +221,32 @@ $(document).ready(function(){
 <span class="nav-text">Home</span>
 </a>
 </li>  
+
+
+<li id = "manual">                                   
+<a href="#"> &nbsp &nbsp
+<span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">M</i>
+      <br>
+
+    </span><br><br>
+<span class="nav-text"><br>VIEW MANUAL</span>
+</a>
+</li>   
+
+<li id = "add">                                   
+<a href="#"> &nbsp &nbsp
+<span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">+</i>
+      <br>
+
+    </span><br><br>
+<span class="nav-text"><br>ADD SUBJECTS</span>
+</a>
+</li>   
+    
 
 <li id = "pass">                                   
 <a href="#"> &nbsp &nbsp
@@ -309,18 +340,7 @@ $(document).ready(function(){
 <span class="nav-text"><br>SEMESTER 8</span>
 </a>
 </li>   
-<li id = "add">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">+</i>
-      <br>
-
-    </span><br><br>
-<span class="nav-text"><br>ADD SUBJECTS</span>
-</a>
-</li>   
-     
+ 
 <li id = "logout">                                   
   <a href="#"> &nbsp &nbsp
   <span class="fa-stack fa-lg">

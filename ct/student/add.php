@@ -7,6 +7,32 @@
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
       <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
       <link rel="stylesheet" href="../css/style.css">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      </style>
+
+
    </head>
    <body>
       <html>
@@ -16,17 +42,19 @@
          
          <script>
             $(document).ready(function () {
-            
-            		$.ajax({url: "checkupdate.php",
+
+              
+              $.ajax({url: "checkupdate.php",
             			          type: "POST",
-            			   
+            			          
             			         success: function(result){
             			         	if(result=='0')
             			            	$("#tech").html("<br><br><br><br><h1>Updates functionality is locked</h1>");
             			        },error: function() {
             			            alert('Error occured');
-            			        }});	
+            	}});	
             	$("#addbtn").click(function(){
+                $("#loader").css("visibility: visible");
             		var ans=0;
             		var rowCount = $("#tb_ra td").closest("tr").length;
             		var tb = document.getElementById("tb_ra");
@@ -35,8 +63,9 @@
               			var cn = tb.rows[i].cells[2].children[0].value;
               			var cr = tb.rows[i].cells[3].children[0].value;
               			var grade = tb.rows[i].cells[4].children[0].value;
-              			$.ajax({url: "addUtil.php",
+              			$.ajax({url: "addUtilRA.php",
               			          type: "POST",
+                              async: false,
               			          data:{
               			          	cc:cc,cn:cn,cr:cr,grade:grade
               			          },
@@ -53,10 +82,12 @@
             			var cn = tb.rows[i].cells[2].children[0].value;
             			var cr = tb.rows[i].cells[3].children[0].value;
             			var grade = tb.rows[i].cells[4].children[0].value;
-            			$.ajax({url: "addUtil.php",
+                  var alt = tb.rows[i].cells[5].children[0].value;
+            			$.ajax({url: "addUtilElec.php",
             			          type: "POST",
+                            async: false,
             			          data:{
-            			          	cc:cc,cn:cn,cr:cr,grade:grade
+            			          	cc:cc,cn:cn,cr:cr,grade:grade,alt:alt
             			          },
             			         success: function(result,data){
             			         	
@@ -73,6 +104,7 @@
                   var grade = tb.rows[i].cells[3].children[0].value;
                   $.ajax({url: "addUtil.php",
                             type: "POST",
+                            async: false,
                             data:{
                               cc:cc,cn:cn,cr:cr,grade:grade
                             },
@@ -82,21 +114,18 @@
                               alert('Error occured');
                           }});  
                 }
-                setTimeout(function()
-                {
-                  alert("Successfully Updated");
+                alert("Successfully Updated");
 
-                }, 2000);
-            		
             		$.ajax({url: "incrementSem.php",
             			          type: "POST",
+                            async: false,
             			         success: function(result,data){
             			         	
             			        },error: function() {
             			            alert('Error occured');
             			        }});	
                 
-            		$("#tech").html("<meta http-equiv=\"refresh\" content=\";url=profile.php\">");
+            		$("#tech").html("<meta http-equiv=\"refresh\" content=\"1;url=profile.php\">");
             		
                }
                );	
@@ -106,8 +135,10 @@
             });
             
          </script>
+         <div class="loader" style="visibility: hidden;"></div>
          <H1>
-            <center>Current Sem:<div id="semid"><?php
+            <center>Current Sem:
+              <div id="semid"><?php
                   $reg=$_SESSION['regno'];
                   $servername = "mysql.ct.mitindia.edu";
                   $username = "ctalumni_chair";
@@ -127,9 +158,11 @@
                   }
                   echo $curr;
                   ?>
+
               </div>
             </center>
          </H1>
+         
          <div class="container" style = "margin-top: 15px; height: 650px;width: 1050px; text-align: right;">
             <div style="overflow-y:auto; height: 500px; width: 1000px" >
                <H1>
@@ -235,6 +268,7 @@
                      <th>Course name</th>
                      <th>Credits</th>
                      <th>Grade</th>
+                     <th>Alternative Course<br>(Mandatory for RA)</th>
                      <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore_elec" title="Add More Subjects">
                         <i class="fa fa-plus" style="font-size:36px"></i>
                         </a>
@@ -265,6 +299,9 @@
                            <option id = "SA">SA</option>
                            <option id = "#RA">#RA</option>
                         </select>
+                     </td>
+                     <td>
+                        <select></select>
                      </td>
                      <td><a href='javascript:void(0);'  class='remove'><i class="fa fa-minus" style="font-size:36px"></i>
                         </a>
@@ -298,6 +335,7 @@
               		tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input type=\"text\"/>";
               		tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input type=\"text\" id= \"coursename\"/>";
               		tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input type=\"text\" id= \"credits\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[5].innerHTML = "<input type=\"text\" id= \"codeOpt\"/>";
               	}
                 else if(selectedValue == "Professional"){
               		$.ajax({url: "populateSem_elec.php",
@@ -310,13 +348,24 @@
                    },error: function() {
                        alert('Error occured');
                    }});
+                  $.ajax({url: "populateSem_elec_Opt.php",
+                     data: {sem:0},
+                     type: "POST",
+                    success: function(result,data){
+                      var tb = document.getElementById("tb_elec");
+                      
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[5].innerHTML = result;
+                   },error: function() {
+                       alert('Error occured');
+                   }});
+
               	}
                 else{
                   var tb = document.getElementById("tb_elec");
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input readonly type=\"text\"/>";
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input readonly type=\"text\" id= \"coursename\"/>";
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input readonly type=\"text\" id= \"credits\"/>";
-
+                   tb.rows[element.parentNode.parentNode.rowIndex].cells[5].innerHTML = "<input readonly type=\"text\"/>";
                 }
               }
               
@@ -430,7 +479,7 @@
          	$(function(){
                 $('#addMore_core').on('click', function() {
                           var data = $("#tb_core tr:eq(1)").clone(true).appendTo("#tb_core");
-                          data.find("select").val('');
+                           data.find("select").val('');
                            data.find("input").val('');
                  });
                  $(document).on('click', '.remove', function() {
