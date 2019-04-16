@@ -9,7 +9,7 @@
 
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
-		$sql="SELECT * FROM `StudentDetails` WHERE `batch_no` = $sem";
+		$sql="SELECT * FROM `StudentDetails` WHERE `batch_no` = $sem and `created` = 0";
 	$result = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result)>0)
 	{

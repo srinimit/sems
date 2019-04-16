@@ -29,9 +29,11 @@ $result = mysqli_query($conn,$sqlname);
 $sql1="CREATE TABLE `$reg`( `ccode` VARCHAR(100) NOT NULL , `cname` VARCHAR(100) NOT NULL , `credits` INT NOT NULL , `grade` VARCHAR(50) NOT NULL , `sem` INT NOT NULL, PRIMARY KEY(ccode,sem) )";
 
 $sql2="INSERT INTO `student`(`regno`, `name`,`type`, `pass`, `sem`, `update`, `fa`) VALUES ('$reg','$name','$type','$pass','$sem','$update','$staff')";
+
+$sql3= "UPDATE `StudentDetails` SET `created`= 1 WHERE `reg_no` = '$reg'";
 echo $sql1;
 echo $sql2;
-if(mysqli_query($conn,$sql1)&&mysqli_query($conn,$sql2)){
+if(mysqli_query($conn,$sql1)&&mysqli_query($conn,$sql2)&&mysqli_query($conn,$sql3)){
         //echo("Error description: " . mysqli_error($conn));
 }
 //echo "Succ";

@@ -84,6 +84,7 @@ function edValueKeyPress() {
     $.ajax({url: "create/populateStudents.php",
           data: {batch:batch},
           type: "POST",
+          async:false,
          success: function(result,data){
          	var tb = document.getElementById("tb");
          	tb.rows[1].cells[2].innerHTML = result;

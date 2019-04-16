@@ -45,97 +45,99 @@
 
               
               $.ajax({url: "checkupdate.php",
-            			          type: "POST",
-            			          
-            			         success: function(result){
-            			         	if(result=='0')
-            			            	$("#tech").html("<br><br><br><br><h1>Updates functionality is locked</h1>");
-            			        },error: function() {
-            			            alert('Error occured');
-            	}});	
-            	$("#addbtn").click(function(){
-                $("#loader").css("visibility: visible");
-            		var ans=0;
-            		var rowCount = $("#tb_ra td").closest("tr").length;
-            		var tb = document.getElementById("tb_ra");
-            		for(var i=1;i<=rowCount;i++){
-              			var cc = tb.rows[i].cells[1].children[0].value;
-              			var cn = tb.rows[i].cells[2].children[0].value;
-              			var cr = tb.rows[i].cells[3].children[0].value;
-              			var grade = tb.rows[i].cells[4].children[0].value;
-              			$.ajax({url: "addUtilRA.php",
-              			          type: "POST",
-                              async: false,
-              			          data:{
-              			          	cc:cc,cn:cn,cr:cr,grade:grade
-              			          },
-              			         success: function(result,data){
-              			         	
-              			        },error: function() {
-              			            alert('Error occured');
-              			        }});	
-            		}
-            		var rowCount = $("#tb_elec td").closest("tr").length;
-            		var tb = document.getElementById("tb_elec");
-            		for(var i=1;i<=rowCount;i++){
-            			var cc = tb.rows[i].cells[1].children[0].value;
-            			var cn = tb.rows[i].cells[2].children[0].value;
-            			var cr = tb.rows[i].cells[3].children[0].value;
-            			var grade = tb.rows[i].cells[4].children[0].value;
-                  var alt = tb.rows[i].cells[5].children[0].value;
-            			$.ajax({url: "addUtilElec.php",
-            			          type: "POST",
-                            async: false,
-            			          data:{
-            			          	cc:cc,cn:cn,cr:cr,grade:grade,alt:alt
-            			          },
-            			         success: function(result,data){
-            			         	
-            			        },error: function() {
-            			            alert('Error occured');
-            			        }});	
-            		}
-                var rowCount = $("#tb_core td").closest("tr").length;
-                var tb = document.getElementById("tb_core");
-                for(var i=1;i<=rowCount;i++){
-                  var cc = tb.rows[i].cells[0].children[0].value;
-                  var cn = tb.rows[i].cells[1].children[0].value;
-                  var cr = tb.rows[i].cells[2].children[0].value;
-                  var grade = tb.rows[i].cells[3].children[0].value;
-                  $.ajax({url: "addUtil.php",
+                            type: "POST",
+                            success: function(result){
+                            if(result=='0')
+                                $("#tech").html("<br><br><br><br><h1>Updates functionality is locked</h1>");
+                          },error: function() {
+                              alert('Error occured');
+              }});  
+              $("#addbtn").click(function(){
+                 var a = confirm("Click to confirm!");
+                if(a){
+                    var ans=0;
+                      var rowCount = $("#tb_ra td").closest("tr").length;
+                      var tb = document.getElementById("tb_ra");
+                      for(var i=1;i<=rowCount;i++){
+                          var cc = tb.rows[i].cells[1].children[0].value;
+                          var cn = tb.rows[i].cells[2].children[0].value;
+                          var cr = tb.rows[i].cells[3].children[0].value;
+                          var grade = tb.rows[i].cells[4].children[0].value;
+                          $.ajax({url: "addUtilRA.php",
+                                    type: "POST",
+                                    async: false,
+                                    data:{
+                                      cc:cc,cn:cn,cr:cr,grade:grade
+                                    },
+                                   success: function(result,data){
+                                    
+                                  },error: function() {
+                                      alert('Error occured');
+                                  }});  
+                      }
+                      var rowCount = $("#tb_elec td").closest("tr").length;
+                      var tb = document.getElementById("tb_elec");
+                      for(var i=1;i<=rowCount;i++){
+                        var cc = tb.rows[i].cells[1].children[0].value;
+                        var cn = tb.rows[i].cells[2].children[0].value;
+                        var cr = tb.rows[i].cells[3].children[0].value;
+                        var grade = tb.rows[i].cells[4].children[0].value;
+                        var alt = tb.rows[i].cells[5].children[0].value;
+                        $.ajax({url: "addUtilElec.php",
+                                  type: "POST",
+                                  async: false,
+                                  data:{
+                                    cc:cc,cn:cn,cr:cr,grade:grade,alt:alt
+                                  },
+                                 success: function(result,data){
+                                  
+                                },error: function() {
+                                    alert('Error occured');
+                                }});  
+                      }
+                      var rowCount = $("#tb_core td").closest("tr").length;
+                      var tb = document.getElementById("tb_core");
+                      for(var i=1;i<=rowCount;i++){
+                        var cc = tb.rows[i].cells[0].children[0].value;
+                        var cn = tb.rows[i].cells[1].children[0].value;
+                        var cr = tb.rows[i].cells[2].children[0].value;
+                        var grade = tb.rows[i].cells[3].children[0].value;
+                        $.ajax({url: "addUtil.php",
+                                  type: "POST",
+                                  async: false,
+                                  data:{
+                                    cc:cc,cn:cn,cr:cr,grade:grade
+                                  },
+                                 success: function(result,data){
+                                  
+                                },error: function() {
+                                    alert('Error occured');
+                                }});  
+                      }
+                      alert("Successfully Updated");
+                      $.ajax({url: "incrementSem.php",
                             type: "POST",
                             async: false,
-                            data:{
-                              cc:cc,cn:cn,cr:cr,grade:grade
-                            },
-                           success: function(result,data){
+                         success: function(result,data){
                             
                           },error: function() {
                               alert('Error occured');
                           }});  
-                }
-                alert("Successfully Updated");
-
-            		$.ajax({url: "incrementSem.php",
-            			          type: "POST",
-                            async: false,
-            			         success: function(result,data){
-            			         	
-            			        },error: function() {
-            			            alert('Error occured');
-            			        }});	
                 
-            		$("#tech").html("<meta http-equiv=\"refresh\" content=\"1;url=profile.php\">");
-            		
+                $("#tech").html("<meta http-equiv=\"refresh\" content=\"1;url=profile.php\">");
+
+                }
+                
                }
-               );	
+               ); 
             
             //  $('#dtBasicExample').DataTable();
             // $('.dataTables_length').addClass('bs-select');
             });
+          
             
          </script>
-         <div class="loader" style="visibility: hidden;"></div>
+         
          <H1>
             <center>Current Sem:
               <div id="semid"><?php
@@ -152,9 +154,9 @@
                   
                   if(mysqli_num_rows($result)>0)
                   {
-                  	while($row=mysqli_fetch_array($result)){
-                  		$curr = $row[0];
-                  	}
+                    while($row=mysqli_fetch_array($result)){
+                      $curr = $row[0];
+                    }
                   }
                   echo $curr;
                   ?>
@@ -163,7 +165,7 @@
             </center>
          </H1>
          
-         <div class="container" style = "margin-top: 15px; height: 650px;width: 1050px; text-align: right;">
+         <div class="container" style = "margin-top: 15px; height: 650px;width: 1150px; text-align: right;">
             <div style="overflow-y:auto; height: 500px; width: 1000px" >
                <H1>
                   <center>Core Subjects</center>
@@ -175,35 +177,59 @@
                      <th>Course name</th>
                      <th>Credits</th>
                      <th>Grade</th>
-                     <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore_core" title="Add More Subjects">
-                        <i class="fa fa-plus" style="font-size:36px"></i>
-                        </a>
-                     </th>
-                  </tr>
-                  <tr>
                      
-                     <td>
-                        <select id="coursecodes" onchange="changeFunc_core(this);"></select>
-                     </td>
-                     <td><input type="text" readonly  style = "width:250px;overflow:hidden;" id= "coursename"></td>
-                     <td><input type="text"  id = "credits" readonly></td>
-                     <td>
-                        <select>
-                           <option></option>
-                           <option id = "O">O</option>
-                           <option id = "A+">A+</option>
-                           <option id = "A">A</option>
-                           <option id = "B+">B+</option>
-                           <option id = "B">B</option>
-                           <option id = "RA">RA</option>
-                           <option id = "SA">SA</option>
-                           <option id = "#RA">#RA</option>
-                        </select>
-                     </td>
-                     <td><a href='javascript:void(0);'  class='remove'><i class="fa fa-minus" style="font-size:36px"></i>
-                        </a>
-                     </td>
                   </tr>
+
+                  <?php
+                  $reg=$_SESSION['regno'];
+                  $servername = "mysql.ct.mitindia.edu";
+                  $username = "ctalumni_chair";
+                  $password = "mitctalumni2019";
+                  $dbname = "ctalumni";
+
+                  // Create connection
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
+                  $sql = "select * from student where regno='$reg'";
+                  $result = mysqli_query($conn,$sql);
+                  
+                  if(mysqli_num_rows($result)>0)
+                  {
+                    while($row=mysqli_fetch_array($result)){
+                      $curr = $row['sem'];
+                      $type = $row['type'];
+                    }
+                   //  echo "<tr><td>".$curr.$type."</td></tr>";
+                    $sqlSubs="SELECT * FROM `$type` WHERE `sem`= $curr";
+                 //    echo "<tr><td>".$sqlSubs."</td></tr>";
+                    $resultSubs = mysqli_query($conn,$sqlSubs);
+                    //echo "<select id=\"code1\" onchange=\"changeFunc(this);\">";
+                    
+                    if(mysqli_num_rows($resultSubs)>0)
+                    {
+                      while($r=mysqli_fetch_array($resultSubs)){
+                        echo "<tr><td><input type='text' readonly id = 'coursecodes' value = '".$r['ccode']."'></input></td>";
+                        echo "<td><input type='text'size=\"55\" readonly id = 'coursecodes' value = '".$r['cname']."'></input></td>";
+                        echo "<td><input type='text' readonly id = 'coursecodes' value = '".$r['credits']."'></input></td>";
+                        echo "<td><select>
+                           <option></option>
+                           <option id = \"O\">O</option>
+                           <option id = \"A+\">A+</option>
+                           <option id = \"A\">A</option>
+                           <option id = \"B+\">B+</option>
+                           <option id = \"B\">B</option>
+                           <option id = \"RA\">RA</option>
+                           <option id = \"SA\">SA</option>
+                           <option id = \"#RA\">#RA</option>
+                        </select></td>
+                        </tr>";
+                      }
+                    }
+                  }
+                 
+
+
+                  ?>
+                    
                </table>
                               <H1>
                   <center>RA Subjects</center>
@@ -238,7 +264,7 @@
                      <td>
                         <select></select>
                      </td>
-                     <td><input type="text" readonly  style = "width:250px;overflow:hidden;" id= "coursename"></td>
+                     <td><input type="text" size="55" readonly  style = "width:250px;overflow:hidden;" id= "coursename"></td>
                      <td><input type="text"  id = "credits" readonly></td>
                      <td>
                         <select>
@@ -285,7 +311,7 @@
                      <td>
                         <select></select>
                      </td>
-                     <td><input type="text" readonly id= "coursename"  style = "width:250px;overflow:hidden;"></td>
+                     <td><input type="text" size="55" readonly id= "coursename"  style = "width:250px;overflow:hidden;"></td>
                      <td><input type="text" id = "credits" readonly></td>
                      <td>
                         <select>
@@ -313,13 +339,13 @@
          <CENTER><button id="addbtn"> Submit</button></CENTER>
          <script type="text/javascript">
             function changeSem(element) {
-              	var selectedValue = element.value;
-              	$.ajax({url: "populateSem.php",
+                var selectedValue = element.value;
+                $.ajax({url: "populateSem.php",
                      data: {sem:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_ra");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
+                      var tb = document.getElementById("tb_ra");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
                       tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input readonly type=\"text\" id= \"coursename\"/>";
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input readonly type=\"text\" id= \"credits\"/>";
 
@@ -329,22 +355,22 @@
               }
             
             function changeType(element) {
-              	var selectedValue = element.value;
-              	if(selectedValue == "others"){
-              		var tb = document.getElementById("tb_elec");
-              		tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input type=\"text\"/>";
-              		tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input type=\"text\" id= \"coursename\"/>";
-              		tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input type=\"text\" id= \"credits\"/>";
+                var selectedValue = element.value;
+                if(selectedValue == "others"){
+                  var tb = document.getElementById("tb_elec");
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input type=\"text\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML = "<input type=\"text\" id= \"coursename\"/>";
+                  tb.rows[element.parentNode.parentNode.rowIndex].cells[3].innerHTML = "<input type=\"text\" id= \"credits\"/>";
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[5].innerHTML = "<input type=\"text\" id= \"codeOpt\"/>";
-              	}
+                }
                 else if(selectedValue == "Professional"){
-              		$.ajax({url: "populateSem_elec.php",
+                  $.ajax({url: "populateSem_elec.php",
                      data: {sem:0},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_elec");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
-                    	
+                      var tb = document.getElementById("tb_elec");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
+                      
                    },error: function() {
                        alert('Error occured');
                    }});
@@ -359,7 +385,7 @@
                        alert('Error occured');
                    }});
 
-              	}
+                }
                 else{
                   var tb = document.getElementById("tb_elec");
                   tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = "<input readonly type=\"text\"/>";
@@ -370,15 +396,15 @@
               }
               
               function changeSem_elec(element) {
-              	
-              	var selectedValue = element.value;
-              	$.ajax({url: "populateSem_elec.php",
+                
+                var selectedValue = element.value;
+                $.ajax({url: "populateSem_elec.php",
                      data: {sem:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_elec");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
-                    	
+                      var tb = document.getElementById("tb_elec");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML = result;
+                      
                    },error: function() {
                        alert('Error occured');
                    }});
@@ -386,46 +412,46 @@
 
               function changeFunc(element) {
                 var selectedValue = element.value;
-              	$.ajax({url: "populate.php",
+                $.ajax({url: "populate.php",
                      data: {ccode:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_ra");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[2].children[0].value = result;
+                      var tb = document.getElementById("tb_ra");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[2].children[0].value = result;
                    },error: function() {
                        alert('Error occured');
                    }});
-              	$.ajax({url: "populateCredits.php",
+                $.ajax({url: "populateCredits.php",
                      data: {ccode:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_ra");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[3].children[0].value = result;
-                    	
+                      var tb = document.getElementById("tb_ra");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[3].children[0].value = result;
+                      
                    },error: function() {
                        alert('Error occured');
                    }});
               }
               
               function changeFunc_elec(element) {
-              	var selectedValue = element.value;
-              	$.ajax({url: "populate.php",
+                var selectedValue = element.value;
+                $.ajax({url: "populate.php",
                      data: {ccode:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_elec");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[2].children[0].value = result;
-                    	
+                      var tb = document.getElementById("tb_elec");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[2].children[0].value = result;
+                      
                    },error: function() {
                        alert('Error occured');
                    }});
-              	$.ajax({url: "populateCredits.php",
+                $.ajax({url: "populateCredits.php",
                      data: {ccode:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_elec");
-                    	tb.rows[element.parentNode.parentNode.rowIndex].cells[3].children[0].value = result;
-                    	
+                      var tb = document.getElementById("tb_elec");
+                      tb.rows[element.parentNode.parentNode.rowIndex].cells[3].children[0].value = result;
+                      
                    },error: function() {
                        alert('Error occured');
                    }});
@@ -459,24 +485,24 @@
          </script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
          <script type="text/javascript">
-         	$(document).ready(function(){
-         		var selectedValue = document.getElementById('semid').innerHTML;
-			     // 	alert(selectedValue);
-				        $.ajax({url: "populateSem_core.php",
+          $(document).ready(function(){
+            var selectedValue = document.getElementById('semid').innerHTML;
+           //   alert(selectedValue);
+                $.ajax({url: "populateSem_core.php",
                      data: {sem:selectedValue},
                      type: "POST",
                     success: function(result,data){
-                    	var tb = document.getElementById("tb_core");
-                    	tb.rows[1].cells[0].children[0].innerHTML = result;
+                      var tb = document.getElementById("tb_core");
+                      tb.rows[1].cells[0].children[0].innerHTML = result;
                    },error: function() {
                        alert('Error occured');
                    }});
-			         });
-              	
+               });
+                
          </script>
             
          <script>
-         	$(function(){
+          $(function(){
                 $('#addMore_core').on('click', function() {
                           var data = $("#tb_core tr:eq(1)").clone(true).appendTo("#tb_core");
                            data.find("select").val('');
