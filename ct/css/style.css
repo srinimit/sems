@@ -2,7 +2,9 @@
 table td input[type="button"] { width: 100%; height: 100%; }
 
 
-
+.shortenedSelect {
+    max-width: 350px;
+}
 
 @font-face {
   font-family: 'Mukta';

@@ -16,7 +16,7 @@ $result = mysqli_query($conn,$sql);
 	{
 	while($row=mysqli_fetch_array($result)){
 		$reg_no = $row['regno'];
-		$sql_count  = "SELECT COUNT(*) AS total FROM `$reg_no` WHERE grade = '$grade'";
+		$sql_count  = "SELECT COUNT(DISTINCT ccode) AS total FROM `$reg_no` WHERE grade = '$grade'";
 		$result_count = mysqli_query($conn,$sql_count);
 		$count = 0;
 		while($rowCount=mysqli_fetch_array($result_count)){

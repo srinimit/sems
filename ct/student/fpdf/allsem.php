@@ -208,5 +208,5 @@ if(mysqli_num_rows($currSem)>0)
 	}
 
 
-$pdf->Output();
+$pdf->Output('I',$reg.'.pdf');
 ?>

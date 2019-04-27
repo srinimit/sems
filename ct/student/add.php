@@ -166,7 +166,7 @@
          </H1>
          
          <div class="container" style = "margin-top: 15px; height: 650px;width: 1150px; text-align: right;">
-            <div style="overflow-y:auto; height: 500px; width: 1000px" >
+            <div style="overflow-y:auto; height: 500px; width: 1100px" >
                <H1>
                   <center>Core Subjects</center>
                </H1>

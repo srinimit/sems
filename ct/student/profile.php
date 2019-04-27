@@ -74,9 +74,9 @@ $(document).ready(function(){
         }});
     });
 
-    $("#sem1").click(function(){
+    $("#sem").click(function(){
       var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
+        $.ajax({url: "persem.php",
           data: {regno:reg,sem:"1"},
           type: "POST",
          success: function(result,data){
@@ -85,83 +85,7 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
-    $("#sem2").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"2"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem3").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"3"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem4").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"4"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem5").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"5"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem6").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"6"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem7").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"7"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
-    $("#sem8").click(function(){
-      var reg = document.getElementById('tech').innerHTML
-        $.ajax({url: "sem.php",
-          data: {regno:reg,sem:"8"},
-          type: "POST",
-         success: function(result,data){
-            $("#tech").html(result);
-        },error: function() {
-            alert('Error occured');
-        }});
-    });
+    
     $("#add").click(function(){
       var reg = document.getElementById('tech').innerHTML
         $.ajax({url: "add.php",
@@ -173,6 +97,19 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
+
+  $("#viewplacement").click(function(){
+        var reg = document.getElementById('tech').innerHTML
+          $.ajax({url: "viewplacements.php",
+            data: {regno:reg},
+            type: "POST",
+           success: function(result,data){
+              $("#tech").html(result);
+          },error: function() {
+              alert('Error occured');
+          }});
+      });
+
     $("#pass").click(function(){
       var reg = document.getElementById('tech').innerHTML
         $.ajax({url: "newpass.php",
@@ -184,6 +121,40 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
+
+    $("#placement").click(function(){
+      var reg = document.getElementById('tech').innerHTML
+        $.ajax({url: "placements.php",
+          data: {regno:reg},
+          type: "POST",
+         success: function(result,data){
+            $("#tech").html(result);
+        },error: function() {
+            alert('Error occured');
+        }});
+    });
+    $("#upload").click(function(){
+      var reg = document.getElementById('tech').innerHTML
+        $.ajax({url: "upload.php",
+          type: "POST",
+         success: function(result,data){
+            $("#tech").html(result);
+        },error: function() {
+            alert('Error occured');
+        }});
+    });
+
+    $("#viewfile").click(function(){
+      var reg = document.getElementById('tech').innerHTML
+        $.ajax({url: "viewfiles.php",
+          type: "POST",
+         success: function(result,data){
+            $("#tech").html(result);
+        },error: function() {
+            alert('Error occured');
+        }});
+    });
+
 
     $("#manual").click(function(){
       window.location.href = "http://www.ct.mitindia.edu/ct/student/UserManual.pdf";
@@ -256,88 +227,62 @@ $(document).ready(function(){
     </span><br><br>
 <span class="nav-text">CHANGE PASS</span>
 </a>
+</li>   
+
+<li id = "placement">                                   
+<a href="#"> &nbsp &nbsp
+<span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">P</i>
+    </span><br><br>
+<span class="nav-text">ADD PLACEMENT DETAILS</span>
+</a>
+</li>   
+
+<li id = "viewplacement">                                   
+<a href="#"> &nbsp &nbsp
+<span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">V</i>
+    </span><br><br>
+<span class="nav-text">VIEW PLACEMENT DETAILS</span>
+</a>
 </li>    
 
-<li id = "sem1">                                   
+<li id = "sem">                                   
 <a href="#"> &nbsp &nbsp
 <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">1</i>
+      <i class="fa fa-inverse fa-stack-1x">S</i>
     </span><br><br>
-<span class="nav-text">SEMESTER 1</span>
+<span class="nav-text">SEMESTER VIEW</span>
 </a>
 </li>   
 
 
-<li id = "sem2">                                   
+
+
+<li id = "upload">                                   
 <a href="#"> &nbsp &nbsp
 <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">2</i>
-    </span><br><br>
-<span class="nav-text">SEMESTER 2</span>
-</a>
-</li>   
- 
-<li id = "sem3">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">3</i>
-    </span><br><br>
-<span class="nav-text">SEMESTER 3</span>
-</a>
-</li>   
- 
-<li id = "sem4">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">4</i>
-    </span><br><br>
-<span class="nav-text">SEMESTER 4</span>
-</a>
-</li>   
- 
-<li id = "sem5">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">5</i>
-    </span><br><br>
-<span class="nav-text">SEMESTER 5</span>
-</a>
-</li>   
- 
-<li id = "sem6">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">6</i>
-    </span><br><br>
-<span class="nav-text">SEMESTER 6</span>
-</a>
-</li>   
- 
-<li id = "sem7">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">7</i>
-</span><br><br>
-<span class="nav-text">SEMESTER 7</span>
-</a>
-</li>   
- 
-<li id = "sem8">                                   
-<a href="#"> &nbsp &nbsp
-<span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-inverse fa-stack-1x">8</i>
+      <i class="fa fa-inverse fa-stack-1x">U</i>
       <br>
 
     </span><br><br>
-<span class="nav-text"><br>SEMESTER 8</span>
+<span class="nav-text"><br>UPLOAD DOCS</span>
+</a>
+</li>   
+
+<li id = "viewfile">                                   
+<a href="#"> &nbsp &nbsp
+<span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">V</i>
+      <br>
+
+    </span><br><br>
+<span class="nav-text"><br>VIEW DOCS</span>
 </a>
 </li>   
  
