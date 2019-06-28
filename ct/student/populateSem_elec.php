@@ -9,14 +9,19 @@ $dbname = "ctalumni";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 	$reg=$_SESSION['regno'];
-	$sqltype= "SELECT  `type` FROM `student` WHERE `regno` = '$reg'";
+	$sqltype= "SELECT  * FROM `student` WHERE `regno` = '$reg'";
 	$type="";
+	$grad = "";
 	$result = mysqli_query($conn,$sqltype);
 	if(mysqli_num_rows($result)>0)
 	{
 		while($r=mysqli_fetch_array($result)){
 			$type = $r['type'];
+			$grad = $r['grad'];
 		}
+	}
+	if($grad=="PG"){
+		$type .= $grad;
 	}
 	$sql="SELECT * FROM `$type` WHERE `sem`= $sem";
 	$result = mysqli_query($conn,$sql);

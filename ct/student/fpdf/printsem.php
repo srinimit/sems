@@ -91,7 +91,7 @@ class mypdf extends PDF_Rotate{
 		$this->Cell(10);
 		$this->Cell(30,9,'Course Code',1,0,'C');
 		$this->Cell(100,9,'Course Name',1,0,'C');
-		$this->Cell(30,9,'Course Cedit',1,0,'C');
+		$this->Cell(30,9,'Course Credit',1,0,'C');
 		$this->Cell(15,9,'Grade',1,0,'C');
 		$this->Ln();
 	}

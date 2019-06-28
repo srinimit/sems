@@ -90,7 +90,7 @@ class mypdf extends PDF_Rotate{
 		$this->Cell(10);
 		$this->Cell(30,9,'Course Code',1,0,'C');
 		$this->Cell(100,9,'Course Name',1,0,'C');
-		$this->Cell(30,9,'Course Cedit',1,0,'C');
+		$this->Cell(30,9,'Course Credit',1,0,'C');
 		$this->Cell(15,9,'Grade',1,0,'C');
 		$this->Ln();
 	}
@@ -174,7 +174,10 @@ if(mysqli_num_rows($currSem)>0)
 								$pdf->Ln();
 
 								$gpa_total = $gpa_total +( $row['credits'] * $array[$row['grade']]);
-								$gpa_credits = $gpa_credits + $row['credits'];
+								if($array[$row['grade']]!=0){
+									$gpa_credits = $gpa_credits + $row['credits'];
+								}
+								
 
 						}
 					}

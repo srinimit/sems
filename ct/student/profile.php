@@ -303,8 +303,10 @@ $(document).ready(function(){
 </nav>
     
     <CENTER>
-     <div id = "tech" style="background-image: 'bg.jpeg'"><?php
-     echo $_SESSION['regno']?>
+     <div id = "tech" style="background-image: 'bg.jpeg'">
+      <?php
+       echo $_SESSION['regno']
+       ?>
        
      </div>
     </CENTER>

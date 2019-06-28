@@ -8,7 +8,22 @@ $dbname = "ctalumni";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-	$sql="SELECT * FROM `cbcs` WHERE `ccode`= '$ccode'";
+	$reg=$_SESSION['regno'];
+	$sqltype= "SELECT  * FROM `student` WHERE `regno` = '$reg'";
+	$type="";
+	$grad = "";
+	$result = mysqli_query($conn,$sqltype);
+	if(mysqli_num_rows($result)>0)
+	{
+		while($r=mysqli_fetch_array($result)){
+			$type = $r['type'];
+			$grad = $r['grad'];
+		}
+	}
+	if($grad=="PG"){
+		$type=$type.$grad;
+	}
+	$sql="SELECT * FROM `$type` WHERE `ccode`= '$ccode'";
 	$result = mysqli_query($conn,$sql);
 	$cname="";
 	if(mysqli_num_rows($result)>0)

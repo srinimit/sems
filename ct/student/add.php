@@ -191,16 +191,20 @@
                   $conn = mysqli_connect($servername, $username, $password, $dbname);
                   $sql = "select * from student where regno='$reg'";
                   $result = mysqli_query($conn,$sql);
-                  
+                  $grad ="";
                   if(mysqli_num_rows($result)>0)
                   {
                     while($row=mysqli_fetch_array($result)){
                       $curr = $row['sem'];
                       $type = $row['type'];
+                      $grad = $row['grad'];
                     }
                    //  echo "<tr><td>".$curr.$type."</td></tr>";
+                    if($grad=="PG"){
+                      $type=$type.$grad;
+                    }
                     $sqlSubs="SELECT * FROM `$type` WHERE `sem`= $curr";
-                 //    echo "<tr><td>".$sqlSubs."</td></tr>";
+                   // echo "<tr><td>".$sqlSubs."</td></tr>";
                     $resultSubs = mysqli_query($conn,$sqlSubs);
                     //echo "<select id=\"code1\" onchange=\"changeFunc(this);\">";
                     
@@ -225,9 +229,7 @@
                       }
                     }
                   }
-                 
-
-
+                
                   ?>
                     
                </table>
@@ -248,18 +250,42 @@
                   </tr>
                   <tr>
                      <td>
-                        <select onchange = "changeSem(this);">
-                           <option></option>
-                           <option id=1>1</option>
-                           <option id=2>2</option>
-                           <option id=2>3</option>
-                           <option id=2>4</option>
-                           <option id=2>5</option>
-                           <option id=2>6</option>
-                           <option id=2>7</option>
-                           <option id=2>8</option>
+                       <?php
+                           $reg=$_SESSION['regno'];
+                            $servername = "mysql.ct.mitindia.edu";
+                            $username = "ctalumni_chair";
+                            $password = "mitctalumni2019";
+                            $dbname = "ctalumni";
 
-                        </select>
+                            // Create connection
+                            $conn = mysqli_connect($servername, $username, $password, $dbname);
+                            $sql = "select * from student where regno='$reg'";
+                            $result = mysqli_query($conn,$sql);
+                            $grad ="";
+                            echo "<select onchange = \"changeSem(this);\">
+                           <option></option>"; 
+                            if(mysqli_num_rows($result)>0)
+                            {
+                              while($row=mysqli_fetch_array($result)){
+                                $grad = $row['grad'];
+                              }
+                             //  echo "<tr><td>".$curr.$type."</td></tr>";
+                              if($grad=="PG"){
+                                for ($i = 1; $i < 5; $i++){
+                                  echo "<option id='$i'>$i</option>";
+                                }
+
+                              }
+                              else{
+                                for ($i = 1; $i < 9; $i++){
+                                  echo "<option id='$i'>$i</option>";
+                                }
+                              }
+                              echo " </select>";
+                              }
+                           ?>
+                          
+                        
                      </td>
                      <td>
                         <select></select>

@@ -136,7 +136,7 @@
             
          </script>
          
-         <div class="container" style = "margin-left: 40px; margin-top: 15px; height: 750px;width: 1350px; text-align: right;">
+         <div class="container" style = "margin-left: 40px; margin-top: 15px; height: 750px;width: 1300px; text-align: right;">
             <div style="overflow-y:auto; height: 700px; width: 1250px" >
                <center>
                 *ENTER ALL DETAILS IN UPPERCASE*

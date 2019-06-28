@@ -28,7 +28,7 @@ if (empty($_SESSION['id'])){
 <link rel="stylesheet" type="text/css" href="../css/menu.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
 $(document).ready(function(){
   $.ajax({url: "swelcome.php",
@@ -94,14 +94,39 @@ $(document).ready(function(){
             alert('Error occured');
         }});
     });
+    $("#insight").click(function(){
+      var reg = document.getElementById('tech').innerHTML;
+        $.ajax({url: "insights/insights.php",
+          type: "POST",
+         success: function(result,data){
+            $("#tech").html(result);
+        },error: function() {
+            alert('Error occured');
+        }});
+    });
     
 }
 );
 </script> 
- 
-
-
-
+<script type="text/javascript">
+    function typechange(){
+      var edValue = document.getElementById("type");
+            var viewtype = edValue.value;
+            if(viewtype=="Academics"){
+              $.ajax({url: "insights/academics.php",
+                  type: "POST",
+                  data: {viewtype:viewtype},
+                 success: function(result,data){
+                    $("#place").html(result);
+                },error: function() {
+                    alert('Error occured');
+                }});
+          }
+            
+    }
+     
+     
+  </script>
 </head>
 <body background="bg.jpeg">
 
@@ -166,6 +191,17 @@ $(document).ready(function(){
     <span class="nav-text">Query student profile</span>
     </a>
 </li>
+
+<li id = "insight">                                   
+    <a href="#"> &nbsp &nbsp
+    <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-inverse fa-stack-1x">I</i>
+        </span><br><br>
+    <span class="nav-text">View Insights</span>
+    </a>
+</li>
+
 <li id = "spass">                                   
 <a href="#"> &nbsp &nbsp
 <span class="fa-stack fa-lg">
